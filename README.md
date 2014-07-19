@@ -12,7 +12,8 @@ You are the ultimate evolution. You can give birth to a new kind of creature, to
 Your composition is double, and must be balanced to survive. You can turn inside out your cell envelope anytime and your have the property to grow by absorbing nutriments that come to you.
 Your life will depend on the balance of your system and your ability to adapt and anticipate.
 
-Be careful, you are alone and weak.
+
+Be careful: you are alone and weak.
 
 ## How to develop
 
