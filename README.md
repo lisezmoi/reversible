@@ -41,6 +41,10 @@ Build JS:
 $ make js
 ```
 
+## Realisation 
+
+Made during a [Selfissh Game Challenge](http://lisezmoi.org/selfishgame/), from the theme “Inside Out”.
+
 ## License
 
 MIT
