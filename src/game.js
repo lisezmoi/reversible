@@ -2,10 +2,11 @@ var Victor = require('victor');
 var makeCharacter = require('./character');
 var makeWave = require('./wave');
 var makeWaveList = require('./wave-list');
+var filters = require('./filters');
 var animate = require('animate');
 
 var GAME_FPS = 60;
-var GAME_UPATE = 20;
+var GAME_UPATE = 50;
 var CANV_WIDTH = 600;
 var CANV_HEIGHT = 600;
 var KEY_UP = 38;
@@ -46,6 +47,7 @@ function start(ctx) {
     ctx.clearRect(0, 0, CANV_WIDTH, CANV_HEIGHT);
     character.draw(ctx);
     waveList.draw(ctx);
+    filters.makeSomeNoise(ctx);
   }
 
   var drawloop = animate(function loop() {
