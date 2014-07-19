@@ -6,24 +6,19 @@ var noiseSources = [
 ];
 var noiseDrawn = 0;
 
-function drawNextNoise(ctx) {
-  noiseDrawn += 1;
-  if (noiseDrawn > noiseSources.length - 1) {
-    noiseDrawn = 0;
-  }
-  var image = noiseImages[noiseSources[noiseDrawn]];
-  ctx.drawImage(image, 0, 0, 600, 600);
-}
-
-function makeSomeNoise(ctx) {
-  if (!noiseImages) {
-    loadImages(noiseSources, function(images) {
-      noiseImages = images;
-      drawNextNoise(ctx);
+// Load noise images, and pass a draw(ctx) function to the callback
+function prepareNoise(cb) {
+  loadImages(noiseSources, function(images) {
+    noiseImages = images;
+    cb(function(ctx) {
+      noiseDrawn += 1;
+      if (noiseDrawn > noiseSources.length - 1) {
+        noiseDrawn = 0;
+      }
+      var image = noiseImages[noiseSources[noiseDrawn]];
+      ctx.drawImage(image, 0, 0, 600, 600);
     });
-    return;
-  }
-  drawNextNoise(ctx);
+  });
 }
 
 // loadImages
@@ -140,5 +135,5 @@ function drawCircle(centerX, centerY, minRad, maxRad, phase, color, ctx) {
 
 module.exports = {
   drawCircle: drawCircle,
-  makeSomeNoise: makeSomeNoise
+  prepareNoise: prepareNoise
 };
