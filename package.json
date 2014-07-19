@@ -12,8 +12,8 @@
   "scripts": {},
   "dependencies": {},
   "devDependencies": {
+    "animate": "0.0.5",
     "browserify": "^4.2.1",
-    "raf": "^2.0.1",
     "stylus": "^0.47.1",
     "victor": "^0.1.4"
   }

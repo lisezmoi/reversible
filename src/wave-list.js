@@ -38,10 +38,7 @@ module.exports = function makeWaveList() {
       for (var color in waves) {
         ctx.strokeStyle = color;
         for (var i = 0, len = waves[color].length, wave; i < len; i++) {
-          wave = waves[color][i];
-          ctx.beginPath();
-          ctx.arc(canvWidth / 2, canvHeight / 2, wave.size.x, 0, 2 * Math.PI);
-          ctx.stroke();
+          waves[color][i].draw(ctx);
         }
       }
     }

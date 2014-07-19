@@ -2,10 +2,11 @@ var Victor = require('victor');
 var makeCharacter = require('./character');
 var makeWave = require('./wave');
 var makeWaveList = require('./wave-list');
-var loop = require('./loop');
+var animate = require('animate');
 
-var GAME_FPS = 30;
-var CANV_WIDTH = 800;
+var GAME_FPS = 60;
+var GAME_UPATE = 20;
+var CANV_WIDTH = 600;
 var CANV_HEIGHT = 600;
 var KEY_UP = 38;
 var KEY_DOWN = 40;
@@ -15,14 +16,19 @@ function start(ctx) {
   var character = makeCharacter(characterPosition, 40, 40);
   var waves = [];
   var waveList = makeWaveList();
+  var updatedDrawn = false;
 
-  function draw() {
-    ctx.clearRect(0, 0, CANV_WIDTH, CANV_HEIGHT);
-    character.draw(ctx);
-    waveList.draw(ctx);
+  var fpsmeter = null;
+  if (window.DEBUG && window.FPSMeter) {
+    fpsmeter = new window.FPSMeter({
+      theme: 'light',
+      heat: 1,
+      graph: 1,
+      history: 20
+    });
   }
 
-  function update(time) {
+  function update() {
     waveList.update(function(wave, remove) {
       wave.size.x += 2;
       wave.size.y += 2;
@@ -31,21 +37,27 @@ function start(ctx) {
         wave.destroy();
       }
     });
+    updatedDrawn = false;
+    setTimeout(update, GAME_UPATE);
+  }
+  setTimeout(update, GAME_UPATE);
+
+  function draw() {
+    ctx.clearRect(0, 0, CANV_WIDTH, CANV_HEIGHT);
+    character.draw(ctx);
+    waveList.draw(ctx);
   }
 
-  var lastUpdate = null;
-  var updatedDrawn = false;
-  var gameloop = loop(GAME_FPS, function loop(time) {
-    if (!lastUpdate || time - lastUpdate > 30) {
-      update();
-      lastUpdate = time;
-      updatedDrawn = false;
-    }
+  var drawloop = animate(function loop() {
+    if (fpsmeter) fpsmeter.tickStart();
+
     if (!updatedDrawn) {
       draw();
       updatedDrawn = true;
     }
-  });
+
+    if (fpsmeter) fpsmeter.tick();
+  }, GAME_FPS);
 
   function addWave() {
     waveList.add(makeWave(character.position.clone(),
@@ -62,8 +74,6 @@ function start(ctx) {
         break;
     }
   });
-
-  gameloop.start();
 }
 
 function getCanvas(container) {

@@ -1,6 +1,11 @@
 var Victor = require('victor');
 
 var Wave = {
+  draw: function(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.position.x, this.position.y, this.size.x, 0, 2 * Math.PI);
+    ctx.stroke();
+  },
   destroy: function() {
     this.toBeRemoved = true;
   }
