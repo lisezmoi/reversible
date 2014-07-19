@@ -1,40 +1,46 @@
-// makeSomeNoise
+var noiseImages = null;
+var noiseSources = [
+  './gfx/img/noise1.png',
+  './gfx/img/noise2.png',
+  './gfx/img/noise3.png'
+];
+var noiseDrawn = 0;
 
-function makeSomeNoise(ctx, frame) {
-  loadImages(sources, function(images) {
-      ctx.drawImage(images.sourceI[i], 0, 0, 800, 600);
-    }
-  });
+function drawNextNoise(ctx) {
+  noiseDrawn += 1;
+  if (noiseDrawn > noiseSources.length - 1) {
+    noiseDrawn = 0;
+  }
+  var image = noiseImages[noiseSources[noiseDrawn]];
+  ctx.drawImage(image, 0, 0, 800, 600);
+}
+
+function makeSomeNoise(ctx) {
+  if (!noiseImages) {
+    loadImages(noiseSources, function(images) {
+      noiseImages = images;
+      drawNextNoise(ctx);
+    });
+    return;
+  }
+  drawNextNoise(ctx);
 }
 
 // loadImages
-
 function loadImages(sources, callback) {
   var images = {};
   var loadedImages = 0;
-  var numImages = 0;
-  // get num of sources
-  for(var src in sources) {
-    numImages++;
-  }
-  for(var src in sources) {
+  for (var i = 0, len = sources.length, src; i < len; i++) {
+    src = sources[i];
     images[src] = new Image();
     images[src].onload = function() {
-      if(++loadedImages >= numImages) {
+      if (++loadedImages >= sources.length) {
         callback(images);
       }
     };
-    images[src].src = sources[src];
+    images[src].src = src;
   }
 }
-
-
-var sources = {
-  sourceI1: './gfx/img/noise1.png',
-  sourceI2: './gfx/img/noise2.png',
-  sourceI3: './gfx/img/noise3.png'
-};
-
 
 // setLinePoints
 
@@ -95,7 +101,7 @@ function setLinePoints(iterations) {
     }
   }
 
-  return pointList;		
+  return pointList;
 }
 
 
@@ -129,11 +135,10 @@ function drawCircle(centerX, centerY, minRad, maxRad, phase, color, ctx) {
     ctx.lineTo(x0, y0);
   }
   ctx.stroke();
-  ctx.fill();		
+  ctx.fill();
 }
 
-var filters = {
+module.exports = {
   drawCircle: drawCircle,
   makeSomeNoise: makeSomeNoise
 };
-module.exports = filters;
