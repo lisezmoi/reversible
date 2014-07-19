@@ -12,7 +12,7 @@ function drawNextNoise(ctx) {
     noiseDrawn = 0;
   }
   var image = noiseImages[noiseSources[noiseDrawn]];
-  ctx.drawImage(image, 0, 0, 800, 600);
+  ctx.drawImage(image, 0, 0, 600, 600);
 }
 
 function makeSomeNoise(ctx) {
