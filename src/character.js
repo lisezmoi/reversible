@@ -1,4 +1,5 @@
 var Victor = require('victor');
+var filters = require('./filters');
 
 var COLOR1 = 'rgba(200,255,0,1)';
 var COLOR2 = 'rgba(250,90,100,1)';
@@ -16,6 +17,8 @@ var Character = {
     ctx.beginPath();
     ctx.fillStyle = this.activeColor === 1? COLOR1 : COLOR2;
     ctx.arc(this.position.x, this.position.y, width1, 0, 2 * Math.PI);
+    //filters.drawCircle(this.position.x, this.position.y, width1, width1+2, 1, COLOR2, ctx);
+
     ctx.fill();
 
     ctx.beginPath();
