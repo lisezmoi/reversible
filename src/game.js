@@ -12,7 +12,7 @@ var CANV_HEIGHT = 600;
 var KEY_UP = 38;
 var KEY_DOWN = 40;
 
-function start(ctx) {
+function start(ctx, drawNoise) {
   var characterPosition = new Victor(CANV_WIDTH / 2, CANV_HEIGHT / 2);
   var character = makeCharacter(characterPosition, 40, 40);
   var waves = [];
@@ -47,7 +47,7 @@ function start(ctx) {
     ctx.clearRect(0, 0, CANV_WIDTH, CANV_HEIGHT);
     character.draw(ctx);
     waveList.draw(ctx);
-    filters.makeSomeNoise(ctx);
+    if (!window.DEBUG) drawNoise(ctx);
   }
 
   var drawloop = animate(function loop() {
@@ -91,7 +91,9 @@ module.exports = function game(container) {
   var ctx = canvas.getContext('2d');
   return {
     start: function() {
-      start(ctx);
+      filters.prepareNoise(function(drawNoise) {
+        start(ctx, drawNoise);
+      });
     }
   };
 };
