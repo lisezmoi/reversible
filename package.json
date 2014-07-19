@@ -1,0 +1,18 @@
+{
+  "name": "insideout",
+  "description": "",
+  "version": "0.0.0",
+  "author": "LISEZMOI (http://lisezmoi.org/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lisezmoi/insideout.git"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^4.2.1",
+    "stylus": "^0.47.1"
+  }
+}
