@@ -1,3 +1,3 @@
 var game = require('./game');
 
-game(document.body).start();
+game(document.querySelector('main')).start();
