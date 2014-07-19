@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="2579.9097"
-     inkscape:cy="-3982.7561"
+     inkscape:zoom="0.7"
+     inkscape:cx="610.68442"
+     inkscape:cy="-4194.2307"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1704,5 +1704,120 @@
        inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export3.png"
        inkscape:export-xdpi="43.219986"
        inkscape:export-ydpi="43.219986" />
+    <rect
+       inkscape:export-ydpi="43.219986"
+       inkscape:export-xdpi="43.219986"
+       inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export1.png"
+       y="4811.8623"
+       x="80"
+       height="700"
+       width="920"
+       id="rect4055"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       inkscape:export-ydpi="43.219986"
+       inkscape:export-xdpi="43.219986"
+       inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export1.png"
+       transform="matrix(1.0830817,0,0,1.0830817,1228.1874,4784.7402)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#d35f5f;fill-opacity:1;stroke:none;stroke-width:12.63099957;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4057"
+       sodipodi:cx="-640"
+       sodipodi:cy="352.36218"
+       sodipodi:rx="60"
+       sodipodi:ry="60"
+       d="m -580,352.36218 a 60,60 0 1 1 -120,0 60,60 0 1 1 120,0 z" />
+    <path
+       inkscape:export-ydpi="43.219986"
+       inkscape:export-xdpi="43.219986"
+       inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export1.png"
+       d="m -580,352.36218 a 60,60 0 1 1 -120,0 60,60 0 1 1 120,0 z"
+       sodipodi:ry="60"
+       sodipodi:rx="60"
+       sodipodi:cy="352.36218"
+       sodipodi:cx="-640"
+       id="path4059"
+       style="color:#000000;fill:#80b3ff;fill-opacity:1;stroke:none;stroke-width:34.09340668;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       sodipodi:type="arc"
+       transform="matrix(0.83308223,0,0,0.83308223,1068.1877,4872.8304)" />
+    <path
+       inkscape:export-ydpi="43.219986"
+       inkscape:export-xdpi="43.219986"
+       inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export1.png"
+       d="m -580,352.36218 a 60,60 0 1 1 -120,0 60,60 0 1 1 120,0 z"
+       sodipodi:ry="60"
+       sodipodi:rx="60"
+       sodipodi:cy="352.36218"
+       sodipodi:cx="-640"
+       id="path4061"
+       style="color:#000000;fill:none;stroke:#d35f5f;stroke-width:0.40529636;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       sodipodi:type="arc"
+       transform="matrix(3.4049157,0,0,3.4049157,2714.1611,3966.6137)" />
+    <path
+       inkscape:export-ydpi="43.219986"
+       inkscape:export-xdpi="43.219986"
+       inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export1.png"
+       transform="matrix(1.9761185,0,0,1.9761185,1799.7309,4470.0678)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#80b3ff;stroke-width:0.69833869;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4063"
+       sodipodi:cx="-640"
+       sodipodi:cy="352.36218"
+       sodipodi:rx="60"
+       sodipodi:ry="60"
+       d="m -580,352.36218 a 60,60 0 1 1 -120,0 60,60 0 1 1 120,0 z" />
+    <path
+       inkscape:export-ydpi="43.219986"
+       inkscape:export-xdpi="43.219986"
+       inkscape:export-filename="/home/raphael/Documents/WORK/PERSO/LISEZMOI/inside-out/export1.png"
+       d="m -580,352.36218 a 60,60 0 1 1 -120,0 60,60 0 1 1 120,0 z"
+       sodipodi:ry="60"
+       sodipodi:rx="60"
+       sodipodi:cy="352.36218"
+       sodipodi:cx="-640"
+       id="path4065"
+       style="color:#000000;fill:none;stroke:#d35f5f;stroke-width:0.80069619;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       sodipodi:type="arc"
+       transform="matrix(1.7235001,0,0,1.7235001,1638.0551,4559.081)" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#d35f5f;stroke-width:6.4000001;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4085"
+       sodipodi:cx="260"
+       sodipodi:cy="5352.3623"
+       sodipodi:rx="20"
+       sodipodi:ry="20"
+       d="m 280,5352.3623 a 20,20 0 1 1 -40,0 20,20 0 1 1 40,0 z"
+       transform="translate(-60,59.999878)" />
+    <path
+       transform="translate(20,-456.80012)"
+       d="m 280,5352.3623 a 20,20 0 1 1 -40,0 20,20 0 1 1 40,0 z"
+       sodipodi:ry="20"
+       sodipodi:rx="20"
+       sodipodi:cy="5352.3623"
+       sodipodi:cx="260"
+       id="path4089"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#d35f5f;stroke-width:6.4000001;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       sodipodi:type="arc" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:#d35f5f;fill-opacity:1;fill-rule:nonzero;stroke:#d35f5f;stroke-width:6.4000001;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4091"
+       sodipodi:cx="260"
+       sodipodi:cy="5352.3623"
+       sodipodi:rx="20"
+       sodipodi:ry="20"
+       d="m 280,5352.3623 a 20,20 0 1 1 -40,0 20,20 0 1 1 40,0 z"
+       transform="translate(500,-220.00012)" />
+    <path
+       transform="translate(680,-500.00012)"
+       d="m 280,5352.3623 a 20,20 0 1 1 -40,0 20,20 0 1 1 40,0 z"
+       sodipodi:ry="20"
+       sodipodi:rx="20"
+       sodipodi:cy="5352.3623"
+       sodipodi:cx="260"
+       id="path4093"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#80b3ff;stroke-width:6.40000009999999975;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       sodipodi:type="arc" />
   </g>
 </svg>
