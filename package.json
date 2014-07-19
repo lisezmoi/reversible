@@ -13,6 +13,8 @@
   "dependencies": {},
   "devDependencies": {
     "browserify": "^4.2.1",
-    "stylus": "^0.47.1"
+    "raf": "^2.0.1",
+    "stylus": "^0.47.1",
+    "victor": "^0.1.4"
   }
 }
