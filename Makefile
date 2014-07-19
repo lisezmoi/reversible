@@ -5,7 +5,11 @@ all: js css
 
 js:
 	$(BROWSERIFY) src/index.js > bundle.js
+
 css:
 	$(STYLUS) < index.styl > bundle.css
 
-.PHONY: js
+install:
+	npm install
+
+.PHONY: all js css install
