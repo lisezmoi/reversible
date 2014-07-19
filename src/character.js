@@ -1,7 +1,7 @@
 var Victor = require('victor');
 
-var COLOR1 = '#d35f5f';
-var COLOR2 = '#80b3ff';
+var COLOR1 = 'rgba(200,255,0,1)';
+var COLOR2 = 'rgba(250,90,100,1)';
 
 var Character = {
   draw: function(ctx) {
@@ -10,6 +10,9 @@ var Character = {
     var width1 = this.size2.x + this.size1.x;
     var width2 = this.size2.x;
 
+    ctx.fillStyle="rgb(50,50,50)";
+    ctx.fillRect(0,0,canvWidth,canvHeight);
+    
     ctx.beginPath();
     ctx.fillStyle = this.activeColor === 1? COLOR1 : COLOR2;
     ctx.arc(this.position.x, this.position.y, width1, 0, 2 * Math.PI);
