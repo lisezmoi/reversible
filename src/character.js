@@ -10,7 +10,7 @@ var Character = {
     var canvHeight = ctx.canvas.height;
     var width1 = this.size2.x + this.size1.x;
     var width2 = this.size2.x;
-
+    
     ctx.fillStyle="rgb(50,50,50)";
     ctx.fillRect(0,0,canvWidth,canvHeight);
     
@@ -25,6 +25,9 @@ var Character = {
     ctx.fillStyle = this.activeColor === 1? COLOR2 : COLOR1;
     ctx.arc(this.position.x, this.position.y, width2, 0, 2 * Math.PI);
     ctx.fill();
+
+    // filters.makeSomeNoise(ctx);
+
   },
   totalSize: function() {
     return this.size1.clone().add(this.size2);

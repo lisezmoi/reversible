@@ -1,3 +1,42 @@
+// makeSomeNoise
+
+function makeSomeNoise(ctx, frame) {
+  loadImages(sources, function(images) {
+      ctx.drawImage(images.sourceI[i], 0, 0, 800, 600);
+    }
+  });
+}
+
+// loadImages
+
+function loadImages(sources, callback) {
+  var images = {};
+  var loadedImages = 0;
+  var numImages = 0;
+  // get num of sources
+  for(var src in sources) {
+    numImages++;
+  }
+  for(var src in sources) {
+    images[src] = new Image();
+    images[src].onload = function() {
+      if(++loadedImages >= numImages) {
+        callback(images);
+      }
+    };
+    images[src].src = sources[src];
+  }
+}
+
+
+var sources = {
+  sourceI1: './gfx/img/noise1.png',
+  sourceI2: './gfx/img/noise2.png',
+  sourceI3: './gfx/img/noise3.png'
+};
+
+
+// setLinePoints
 
 function setLinePoints(iterations) {
   var pointList = {};
@@ -60,6 +99,7 @@ function setLinePoints(iterations) {
 }
 
 
+// drawCircle
 
 function drawCircle(centerX, centerY, minRad, maxRad, phase, color, ctx) {
   var point;
@@ -93,6 +133,7 @@ function drawCircle(centerX, centerY, minRad, maxRad, phase, color, ctx) {
 }
 
 var filters = {
-    drawCircle: drawCircle
+  drawCircle: drawCircle,
+  makeSomeNoise: makeSomeNoise
 };
 module.exports = filters;
