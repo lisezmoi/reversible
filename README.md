@@ -41,9 +41,11 @@ Build JS:
 $ make js
 ```
 
-## Realisation 
+## Context and tools
 
 Made during a [Selfissh Game Challenge](http://lisezmoi.org/selfishgame/), from the theme “Inside Out”.
+
+Designed using [Gimp](http://www.gimp.org/), [Inkscape](http://www.inkscape.org/) and JavaScript.
 
 ## License
 
