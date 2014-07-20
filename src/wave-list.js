@@ -30,13 +30,13 @@ module.exports = function makeWaveList() {
         }
       }
     },
-    draw: function(ctx) {
+    draw: function(ctx, colors) {
       var waves = getWavesByColor(this.waves);
       var canvWidth = ctx.canvas.width;
       var canvHeight = ctx.canvas.height;
 
       for (var color in waves) {
-        ctx.strokeStyle = color;
+        ctx.strokeStyle = colors[color];
         for (var i = 0, len = waves[color].length, wave; i < len; i++) {
           waves[color][i].draw(ctx);
         }
