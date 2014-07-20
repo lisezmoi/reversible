@@ -111,16 +111,16 @@ function start(ctx, drawNoise) {
 
     ticks++;
 
+    if (reverseCharacter) {
+      character.reverse();
+      reverseCharacter = false;
+    }
+
     if (addWave && (!lastWaveAdded || ticks - lastWaveAdded > 2)) {
       waveList.add(makeWave(character.position.clone(),
                             character.totalSize().clone(), character.color));
       addWave = false;
       lastWaveAdded = ticks;
-    }
-
-    if (reverseCharacter) {
-      character.reverse();
-      reverseCharacter = false;
     }
 
     character.unbalance(characterSizeDiff);
