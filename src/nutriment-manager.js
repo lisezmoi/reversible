@@ -39,7 +39,7 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
       }
 
       if (lastpop !== null && ticks - lastpop < this.popDelay) return;
-      // if (utils.getRandomInt(0, 10)) return;
+      if (utils.getRandomInt(0, 10)) return;
       if (nutriments.length > 100) return;
 
       lastpop = ticks;

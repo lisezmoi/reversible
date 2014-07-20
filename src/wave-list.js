@@ -15,19 +15,18 @@ module.exports = function makeWaveList() {
     add: function(wave) {
       this.waves.push(wave);
     },
-    update: function(cb) {
-      for (var i = 0, len = this.waves.length; i < len; i++) {
-        cb(this.waves[i]);
-      }
-
-      // Remove destroyed waves
-      var wavesCopy = this.waves.slice();
-      var waveIndex = null;
-      for (var i = 0, len = wavesCopy.length; i < len; i++) {
-        if (wavesCopy[i].toBeRemoved) {
-          waveIndex = this.waves.indexOf(wavesCopy[i]);
-          if (waveIndex > -1) this.waves.splice(waveIndex, 1);
+    tick: function(ticks, character, canvWidth, canvHeight) {
+      var i = this.waves.length;
+      var wave = null;
+      while (i--) {
+        wave = this.waves[i];
+        wave.size.x += 2;
+        wave.size.y += 2;
+        if (wave.size.length() > canvWidth / 2) {
+          wave.destroy();
         }
+        // remove waves
+        if (wave.toBeRemoved) this.waves.splice(i, 1);
       }
     },
     draw: function(ctx, colors) {

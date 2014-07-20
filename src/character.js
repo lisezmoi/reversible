@@ -5,8 +5,9 @@ var Character = {
     var canvWidth = ctx.canvas.width;
     var canvHeight = ctx.canvas.height;
 
-    var width1 = this.sizes[this.color].x + this.sizes[this.inactiveColor()].x;
-    var width2 = this.sizes[this.inactiveColor()].x;
+    var width1 = this.sizes[this.color].length() +
+                 this.sizes[this.inactiveColor()].length();
+    var width2 = this.sizes[this.inactiveColor()].length();
 
     ctx.beginPath();
     ctx.fillStyle = colors[this.color];

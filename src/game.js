@@ -21,7 +21,6 @@ var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
 function start(ctx, drawNoise) {
   var characterPosition = new Victor(CANV_WIDTH / 2, CANV_HEIGHT / 2);
   var character = makeCharacter(characterPosition, 25, 25, COLORS);
-  var waves = [];
   var waveList = makeWaveList();
   var nutrimentManager = makeNutrimentManager(CANV_WIDTH, CANV_HEIGHT, character);
   var updatedDrawn = false;
@@ -42,13 +41,30 @@ function start(ctx, drawNoise) {
   function collisions() {
     var nutriments = nutrimentManager.nutriments;
 
-    // nutriments / character
+    // nutriments
     for (var i = 0, len = nutriments.length; i < len; i++) {
+
+      // nutriments <> character
       var distance = character.position.clone().subtract(nutriments[i].position);
       var characterSize = character.totalSize().length();
-      if (distance.length() < characterSize - nutriments[i].size.x * 2 + 2) {
-        nutriments[i].destroy();
+      var nutrimentSize = nutriments[i].size.length() - 1;
+      var distanceLen = distance.length();
+      if (distanceLen < characterSize + nutrimentSize) {
         character.touch(nutriments[i].color);
+        nutriments[i].destroy();
+      }
+
+      // nutriments <> waves
+      if (nutriments[i].charged) continue;
+      for (var j = 0, len2 = waveList.waves.length; j < len2; j++) {
+        if (waveList.waves[j].size.length() > distanceLen - nutrimentSize) {
+          if (waveList.waves[j].color !== nutriments[i].color) {
+            nutriments[i].invertColor();
+          } else {
+            nutriments[i].charged = true;
+          }
+          waveList.waves[j].destroy();
+        }
       }
     }
   }
@@ -70,14 +86,7 @@ function start(ctx, drawNoise) {
       reverseCharacter = false;
     }
 
-    waveList.update(function(wave, remove) {
-      wave.size.x += 2;
-      wave.size.y += 2;
-      if (wave.size.x > CANV_WIDTH / 2 ||
-          wave.size.y > CANV_HEIGHT / 2) {
-        wave.destroy();
-      }
-    });
+    waveList.tick(ticks, character, CANV_WIDTH, CANV_HEIGHT);
     nutrimentManager.tick(ticks, character);
     updatedDrawn = false;
 
