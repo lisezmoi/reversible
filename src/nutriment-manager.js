@@ -23,8 +23,9 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
   return {
     nutriments: nutriments,
     maxPopDelay: 0.5 * 20, // <seconds> * 20
-    minPopDelay: 2.5 * 20, // <seconds> * 20
-    speed: 1.5,
+    minPopDelay: 5 * 20, // <seconds> * 20
+    popChances: 80,
+    speed: 1,
     tick: function(ticks, character) {
       // update every existing nutriment
       var i = nutriments.length;
@@ -38,7 +39,8 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
       }
 
       if (lastpop !== null && ticks - lastpop < this.maxPopDelay) return;
-      if (ticks - lastpop < this.minPopDelay && utils.getRandomInt(0, 50)) return;
+      if (ticks - lastpop < this.minPopDelay &&
+          utils.getRandomInt(0, this.popChances)) return;
       if (nutriments.length > 40) return;
 
       lastpop = ticks;

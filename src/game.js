@@ -17,6 +17,9 @@ var KEY_LEFT = 37;
 var KEY_RIGHT = 39;
 var KEY_SPACE = 32;
 var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
+var NUTRIMENTS_ACCELERATION = 0.0005;
+var NUTRIMENTS_MIN_POP_DELAY_ACCELERATION = 0.005;
+var NUTRIMENTS_POP_CHANCES_ACCELERATION = 0.005;
 
 function start(ctx, drawNoise) {
   var characterPosition = null;
@@ -46,6 +49,7 @@ function start(ctx, drawNoise) {
     character = makeCharacter(characterPosition, 25, 25, COLORS);
     waveList = makeWaveList();
     nutrimentManager = makeNutrimentManager(CANV_WIDTH, CANV_HEIGHT, character);
+    nutrimentManager.nutrimentsSpeed = 1.5;
     updatedDrawn = false;
     addWave = false;
     reverseCharacter = false;
@@ -95,7 +99,7 @@ function start(ctx, drawNoise) {
               wave.invert = true;
             }
           } else if (wave.color === nutriments[i].color) {
-            nutriments[i].invertColor();
+            // nutriments[i].invertColor();
           }
         }
       }
@@ -128,10 +132,13 @@ function start(ctx, drawNoise) {
     collisions();
 
     if (character.sizes[0].x < 0 || character.sizes[1].x < 0) {
-      draw();
       gameStatus.gameover = true;
       gameStatus.pause();
     }
+
+    nutrimentManager.speed += NUTRIMENTS_ACCELERATION;
+    nutrimentManager.minPopDelay -= NUTRIMENTS_MIN_POP_DELAY_ACCELERATION;
+    nutrimentManager.popChances -= NUTRIMENTS_POP_CHANCES_ACCELERATION;
 
     if (!gameStatus.paused) updateTimeoutId = setTimeout(update, GAME_UPATE);
   }
