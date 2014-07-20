@@ -6,6 +6,16 @@ var container = document.querySelector('main');
 
 var game = makeGame(container);
 
-game.start(function() {
+game.start(function(gameStatus) {
   container.classList.add('ready');
+
+  gameStatus.resume();
+
+  ui(function(boxDisplayed) {
+    gameStatus.externalPause = boxDisplayed;
+    if (boxDisplayed) {
+      gameStatus.pause();
+    }
+    else if (!gameStatus.pausedScreen) gameStatus.resume();
+  });
 });

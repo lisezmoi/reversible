@@ -9,16 +9,23 @@ var noiseSources = [
 var noiseDrawn = 0;
 
 // Load noise images, and pass a draw(ctx) function to the callback
+var lastNoiseChange = null;
 function prepareNoise(cb) {
   loadImages(noiseSources, function(images) {
     noiseImages = images;
     cb(function(ctx) {
-      noiseDrawn += 1;
-      if (noiseDrawn > noiseSources.length - 1) {
-        noiseDrawn = 0;
+
+      var now = Date.now();
+      if (!lastNoiseChange || now - lastNoiseChange > 50) {
+        noiseDrawn += 1;
+        if (noiseDrawn > noiseSources.length - 1) {
+          noiseDrawn = 0;
+        }
+        lastNoiseChange = now;
       }
-      var image = noiseImages[noiseSources[noiseDrawn]];
-      ctx.drawImage(image, 0, 0, 600, 600);
+
+      ctx.drawImage(noiseImages[noiseSources[noiseDrawn]], 0, 0,
+                    ctx.canvas.width, ctx.canvas.height);
     });
   });
 }
