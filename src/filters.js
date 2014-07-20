@@ -18,7 +18,7 @@ function prepareNoise(cb) {
       var now = Date.now();
       if (!lastNoiseChange || now - lastNoiseChange > 50) {
         noiseDrawn += 1;
-        if (noiseDrawn > noiseSources.length - 1) {
+        if (noiseDrawn >= noiseSources.length - 1) {
           noiseDrawn = 0;
         }
         lastNoiseChange = now;
