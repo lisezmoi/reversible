@@ -1,12 +1,12 @@
 {
-  "name": "insideout",
+  "name": "reversible",
   "description": "",
   "version": "0.0.0",
   "author": "LISEZMOI (http://lisezmoi.org/)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/lisezmoi/insideout.git"
+    "url": "git://github.com/lisezmoi/reversible.git"
   },
   "main": "index.js",
   "scripts": {},
