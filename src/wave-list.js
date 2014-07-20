@@ -1,13 +1,3 @@
-function getWavesByColor(waves) {
-  var wavesByColor = {};
-  for (var i = 0, len = waves.length, wave; i < len; i++) {
-    wave = waves[i];
-    if (!wavesByColor[wave.color]) wavesByColor[wave.color] = [];
-    wavesByColor[wave.color].push(wave);
-  }
-  return wavesByColor;
-}
-
 module.exports = function makeWaveList() {
   return {
     wavesToRemove: [],
@@ -30,15 +20,8 @@ module.exports = function makeWaveList() {
       }
     },
     draw: function(ctx, colors) {
-      var waves = getWavesByColor(this.waves);
-      var canvWidth = ctx.canvas.width;
-      var canvHeight = ctx.canvas.height;
-
-      for (var color in waves) {
-        ctx.strokeStyle = colors[color];
-        for (var i = 0, len = waves[color].length, wave; i < len; i++) {
-          waves[color][i].draw(ctx);
-        }
+      for (var i = 0, len = this.waves.length; i < len; i++) {
+        this.waves[i].draw(ctx, colors);
       }
     }
   };

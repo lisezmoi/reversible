@@ -1,8 +1,9 @@
 var Victor = require('victor');
 
 var Wave = {
-  draw: function(ctx) {
+  draw: function(ctx, colors) {
     ctx.beginPath();
+    ctx.strokeStyle = this.invert? 'grey' : colors[this.color];
     ctx.arc(this.position.x, this.position.y, this.size.length(), 0, 2 * Math.PI);
     ctx.lineWidth = this.active? 2 : 0.5;
     ctx.stroke();
