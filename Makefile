@@ -4,10 +4,10 @@ STYLUS=./node_modules/.bin/stylus
 all: js css
 
 js:
-	$(BROWSERIFY) src/index.js > bundle.js
+	$(BROWSERIFY) src/index.js > dist/bundle.js
 
 css:
-	$(STYLUS) < index.styl > bundle.css
+	$(STYLUS) < index.styl > dist/bundle.css
 
 deps:
 	npm install
