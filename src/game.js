@@ -12,6 +12,9 @@ var CANV_WIDTH = 600;
 var CANV_HEIGHT = 600;
 var KEY_UP = 38;
 var KEY_DOWN = 40;
+var KEY_LEFT = 37;
+var KEY_RIGHT = 39;
+var KEY_SPACE = 32;
 var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
 
 function start(ctx, drawNoise, cb) {
@@ -103,9 +106,12 @@ function start(ctx, drawNoise, cb) {
   document.addEventListener('keydown', function(e) {
     switch (e.keyCode) {
       case KEY_UP:
+      case KEY_RIGHT:
+      case KEY_SPACE:
         addWave = true;
         break;
       case KEY_DOWN:
+      case KEY_LEFT:
         reverseCharacter = true;
         break;
     }
