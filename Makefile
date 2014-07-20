@@ -9,7 +9,7 @@ js:
 css:
 	$(STYLUS) < index.styl > bundle.css
 
-install:
+deps:
 	npm install
 
 .PHONY: all js css install
