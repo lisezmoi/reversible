@@ -26,14 +26,34 @@ var Character = {
   inactiveColor: function() {
     return this.color === 0? 1 : 0;
   },
+  sizeByWeakness: function() {
+    return this.sizes.sort(function(sizeA, sizeB) {
+      var aLen = sizeA.length();
+      var bLen = sizeB.length();
+      return Math.max(aLen, bLen) === bLen? -1 : 1;
+    });
+  },
   reverse: function() {
     this.color = this.inactiveColor();
   },
-  touch: function(color) {
+  balance: function(sizeDiff) {
+    var sizesByWeakness = this.sizeByWeakness();
+    sizesByWeakness[0].add(sizeDiff);
+    sizesByWeakness[1].subtract(sizeDiff);
+  },
+  unbalance: function(sizeDiff) {
+    var sizesByWeakness = this.sizeByWeakness();
+    sizesByWeakness[1].add(sizeDiff);
+    sizesByWeakness[0].subtract(sizeDiff);
+  },
+  touch: function(nutriment) {
     var growBy = new Victor(1, 1).normalize().multiply(2);
-    if (color === this.color) {
-      this.sizes[this.color].add(growBy);
-      this.sizes[this.inactiveColor()].subtract(growBy);
+    var colorMatch = this.color === nutriment.color;
+    if (!nutriment.charged) return;
+    if (colorMatch) {
+      this.balance(growBy);
+    } else {
+      this.unbalance(growBy);
     }
   }
 };

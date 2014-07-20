@@ -50,7 +50,7 @@ function start(ctx, drawNoise) {
       var nutrimentSize = nutriments[i].size.length() - 1;
       var distanceLen = distance.length();
       if (distanceLen < characterSize + nutrimentSize) {
-        character.touch(nutriments[i].color);
+        character.touch(nutriments[i]);
         nutriments[i].destroy();
       }
 
@@ -86,11 +86,20 @@ function start(ctx, drawNoise) {
       reverseCharacter = false;
     }
 
+    var characterDiff = new Victor(1, 1).normalize().multiply(0.05);
+    character.unbalance(characterDiff);
+
     waveList.tick(ticks, character, CANV_WIDTH, CANV_HEIGHT);
     nutrimentManager.tick(ticks, character);
     updatedDrawn = false;
 
     collisions();
+
+    if (character.sizes[0].x < 0 || character.sizes[1].x < 0) {
+      draw();
+      gameStatus.gameover = true;
+      gameStatus.pause();
+    }
 
     if (!gameStatus.paused) updateTimeoutId = setTimeout(update, GAME_UPATE);
   }
@@ -101,6 +110,7 @@ function start(ctx, drawNoise) {
     waveList.draw(ctx, COLORS);
     nutrimentManager.draw(ctx, COLORS);
     if (gameStatus.pausedScreen) screens.pause(ctx);
+    if (gameStatus.gameover) screens.gameover(ctx);
     if (!window.DEBUG) drawNoise(ctx);
   }
 
@@ -116,6 +126,7 @@ function start(ctx, drawNoise) {
   }, GAME_FPS);
 
   var gameStatus = {
+    gameover: false,
     paused: true,
     pausedScreen: false,
     pause: function(displayPausedScreen) {
@@ -132,6 +143,7 @@ function start(ctx, drawNoise) {
   };
 
   window.onblur = function() {
+    if (window.DEBUG) return;
     if (!gameStatus.paused) gameStatus.pause(true);
     draw();
   };

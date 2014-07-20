@@ -22,7 +22,7 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
   var lastpop = null;
   return {
     nutriments: nutriments,
-    popDelay: 3 * 20, // <seconds> * 20
+    popDelay: 0.4 * 20, // <seconds> * 20
     speed: 2,
     // popDelay: 0.5 * 20, // <seconds> * 20
     // speed: 8,
@@ -39,8 +39,8 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
       }
 
       if (lastpop !== null && ticks - lastpop < this.popDelay) return;
-      if (utils.getRandomInt(0, 10)) return;
-      if (nutriments.length > 100) return;
+      if (utils.getRandomInt(0, 50)) return;
+      if (nutriments.length > 40) return;
 
       lastpop = ticks;
 

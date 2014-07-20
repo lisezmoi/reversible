@@ -14,5 +14,15 @@ module.exports = {
   },
   starting: function(ctx) {
     // TODO
+  },
+  gameover: function(ctx) {
+    var width = ctx.canvas.width;
+    var height = ctx.canvas.height;
+    ctx.fillStyle = 'rgba(0,0,0,.65)';
+    ctx.fillRect(0, 0, width, height);
+    ctx.font = '60px/100px Verdana, sans-serif';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.fillText('GAME OVER', width / 2, height / 2 + 25);
   }
 };
