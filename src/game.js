@@ -122,6 +122,11 @@ function start(ctx, drawNoise) {
     }
   };
 
+  window.onblur = function() {
+    if (!gameStatus.paused) gameStatus.pause(true);
+    draw();
+  };
+
   document.addEventListener('keydown', function(e) {
     if (e.key === 'p' && !gameStatus.externalPause
                       && (!gameStatus.paused ||
