@@ -1,25 +1,7 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-transition(properties, durations, timings)
-    -moz-transition-property properties
-    -o-transition-property properties
-    -webkit-transition-property properties
-    -ms-transition-property properties
-    transition-property properties
-    -moz-transition-duration durations
-    -o-transition-duration durations
-    -webkit-transition-duration durations
-    -ms-transition-duration durations
-    transition-duration durations
-    -moz-transition-timing-function timings
-    -o-transition-timing-function timings
-    -webkit-transition-timing-function timings
-    -ms-transition-timing-function timings
-    transition-timing-function timings
-
+*
+  -webkit-box-sizing border-box
+  -moz-box-sizing border-box
+  box-sizing border-box
 
 body, html
   height 100%
@@ -42,7 +24,7 @@ body
     &#controls
       bottom 45px
   .box
-    transition(opacity, 2s, ease-out)
+    transition opacity 2s ease-out
     border-radius 300px
     opacity 0
     z-index 10
@@ -66,10 +48,6 @@ body
       img
         width 200px
         height auto
-main
-  position relative
-  transform translateY(-50%)
-  top 50%
 a, button
   text-decoration none
   color #444
@@ -83,19 +61,26 @@ button
 p
   margin 0 0 10px 0
 main
-  canvas
+  position relative
+  transform translateY(-50%)
+  top 50%
+  transition opacity 500ms ease-in-out
+  opacity 0
+  &.ready
+    opacity 1
+canvas
+  display block
+  margin 0 auto
+  background rgb(50,50,50)
+#logo
+  position absolute
+  top 550px
+  width 100%
+  img
+    width 106px
+    height auto
     display block
     margin 0 auto
-    background rgb(50,50,50)
-  #logo
-    position absolute
-    top 550px
-    width 100%
-    img
-      width 106px
-      height auto
-      display block
-      margin 0 auto
 
 :-moz-any-link:focus {color:#eee;}
 ::selection {color:#eee;}
