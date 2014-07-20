@@ -20,6 +20,7 @@ var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
 var NUTRIMENTS_ACCELERATION = 0.0005;
 var NUTRIMENTS_MIN_POP_DELAY_ACCELERATION = 0.005;
 var NUTRIMENTS_POP_CHANCES_ACCELERATION = 0.005;
+var SCORE_MULTIPLIER_ACCELERATION = 1.001;
 
 function start(ctx, drawNoise) {
   var characterPosition = null;
@@ -33,6 +34,8 @@ function start(ctx, drawNoise) {
   var ticks = null;
   var lastWaveAdded = null;
   var characterSizeDiff = null;
+  var playerScore = null;
+  var scoreMultiplier = null;
 
   var fpsmeter = null;
   if (window.DEBUG && window.FPSMeter) {
@@ -57,6 +60,8 @@ function start(ctx, drawNoise) {
     ticks = 0;
     lastWaveAdded = null;
     characterSizeDiff = new Victor(1, 1).normalize().multiply(0.04);
+    playerScore = 0;
+    scoreMultiplier = 1.001;
   }
 
   function collisions() {
@@ -71,7 +76,7 @@ function start(ctx, drawNoise) {
       var nutrimentSize = nutriments[i].size.length() - 1;
       var distanceLen = distance.length();
       if (distanceLen < characterSize + nutrimentSize) {
-        character.touch(nutriments[i]);
+        playerScore += character.touch(nutriments[i]) * scoreMultiplier;
         nutriments[i].destroy();
       }
 
@@ -140,6 +145,8 @@ function start(ctx, drawNoise) {
     nutrimentManager.minPopDelay -= NUTRIMENTS_MIN_POP_DELAY_ACCELERATION;
     nutrimentManager.popChances -= NUTRIMENTS_POP_CHANCES_ACCELERATION;
 
+    scoreMultiplier *= SCORE_MULTIPLIER_ACCELERATION;
+
     if (!gameStatus.paused) updateTimeoutId = setTimeout(update, GAME_UPATE);
   }
 
@@ -149,7 +156,7 @@ function start(ctx, drawNoise) {
     waveList.draw(ctx, COLORS);
     nutrimentManager.draw(ctx, COLORS);
     if (gameStatus.pausedScreen) screens.pause(ctx);
-    if (gameStatus.gameover) screens.gameover(ctx);
+    if (gameStatus.gameover) screens.gameover(ctx, playerScore);
     if (!window.DEBUG) drawNoise(ctx);
   }
 
