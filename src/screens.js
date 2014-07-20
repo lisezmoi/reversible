@@ -23,6 +23,9 @@ module.exports = {
     ctx.font = '60px/100px Verdana, sans-serif';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('GAME OVER', width / 2, height / 2 + 25);
+    ctx.fillText('GAME OVER', width / 2, height / 2 - 20);
+
+    ctx.font = '20px/60px Verdana, sans-serif';
+    ctx.fillText('PRESS [R] TO PLAY AGAIN', width / 2, height / 2 + 60);
   }
 };

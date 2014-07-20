@@ -20,8 +20,8 @@ module.exports = function makeWaveList() {
       var wave = null;
       while (i--) {
         wave = this.waves[i];
-        wave.size.x += 2;
-        wave.size.y += 2;
+        wave.size.x += wave.invert? -2 : 2;
+        wave.size.y += wave.invert? -2 : 2;
         if (wave.size.length() > canvWidth / 2) {
           wave.destroy();
         }

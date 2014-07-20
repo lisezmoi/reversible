@@ -19,14 +19,17 @@ var KEY_SPACE = 32;
 var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
 
 function start(ctx, drawNoise) {
-  var characterPosition = new Victor(CANV_WIDTH / 2, CANV_HEIGHT / 2);
-  var character = makeCharacter(characterPosition, 25, 25, COLORS);
-  var waveList = makeWaveList();
-  var nutrimentManager = makeNutrimentManager(CANV_WIDTH, CANV_HEIGHT, character);
-  var updatedDrawn = false;
-  var addWave = false;
-  var reverseCharacter = false;
+  var characterPosition = null;
+  var character = null;
+  var waveList = null;
+  var nutrimentManager = null;
+  var updatedDrawn = null;
+  var addWave = null;
+  var reverseCharacter = null;
   var updateTimeoutId = null;
+  var ticks = null;
+  var lastWaveAdded = null;
+  var characterSizeDiff = null;
 
   var fpsmeter = null;
   if (window.DEBUG && window.FPSMeter) {
@@ -36,6 +39,20 @@ function start(ctx, drawNoise) {
       graph: 1,
       history: 20
     });
+  }
+
+  function init() {
+    characterPosition = new Victor(CANV_WIDTH / 2, CANV_HEIGHT / 2);
+    character = makeCharacter(characterPosition, 25, 25, COLORS);
+    waveList = makeWaveList();
+    nutrimentManager = makeNutrimentManager(CANV_WIDTH, CANV_HEIGHT, character);
+    updatedDrawn = false;
+    addWave = false;
+    reverseCharacter = false;
+    updateTimeoutId = null;
+    ticks = 0;
+    lastWaveAdded = null;
+    characterSizeDiff = new Victor(1, 1).normalize().multiply(0.04);
   }
 
   function collisions() {
@@ -56,23 +73,34 @@ function start(ctx, drawNoise) {
 
       // nutriments <> waves
       if (nutriments[i].charged) continue;
-      for (var j = 0, len2 = waveList.waves.length; j < len2; j++) {
-        if (waveList.waves[j].size.length() > distanceLen - nutrimentSize) {
-          if (waveList.waves[j].color !== nutriments[i].color) {
-            // nutriments[i].invertColor();
-            nutriments[i].dead = true;
-            nutriments[i].charged = true;
-          } else {
-            nutriments[i].charged = true;
+      for (var j = 0, len2 = waveList.waves.length, wave; j < len2; j++) {
+        wave = waveList.waves[j];
+
+        if (wave.invert && wave.size.length() < characterSize) {
+          character.unbalance(new Victor(1, 1).normalize().multiply(4));
+          wave.destroy();
+        }
+
+        if (wave.invert) continue;
+
+        if (wave.size.length() > distanceLen - nutrimentSize) {
+          if (wave.active) {
+            if (wave.color === nutriments[i].color) {
+              nutriments[i].charged = true;
+              wave.active = false;
+            } else if (wave.color !== nutriments[i].color) {
+              wave.invert = true;
+              // nutriments[i].dead = true;
+              // nutriments[i].charged = true;
+            }
+          } else if (wave.color === nutriments[i].color) {
+            nutriments[i].invertColor();
           }
-          waveList.waves[j].destroy();
         }
       }
     }
   }
 
-  var ticks = 0;
-  var lastWaveAdded = null;
   function update() {
     var now = Date.now();
 
@@ -90,8 +118,7 @@ function start(ctx, drawNoise) {
       reverseCharacter = false;
     }
 
-    var characterDiff = new Victor(1, 1).normalize().multiply(0.05);
-    character.unbalance(characterDiff);
+    character.unbalance(characterSizeDiff);
 
     waveList.tick(ticks, character, CANV_WIDTH, CANV_HEIGHT);
     nutrimentManager.tick(ticks, character);
@@ -143,6 +170,12 @@ function start(ctx, drawNoise) {
       this.pausedScreen = false;
       clearTimeout(updateTimeoutId);
       updateTimeoutId = setTimeout(update, GAME_UPATE);
+    },
+    restart: function() {
+      this.gameover = false;
+      this.paused = false;
+      this.pausedScreen = false;
+      init();
     }
   };
 
@@ -153,6 +186,9 @@ function start(ctx, drawNoise) {
   };
 
   document.addEventListener('keydown', function(e) {
+    if (e.key === 'r' && (!gameStatus.paused || gameStatus.gameover)) {
+      gameStatus.restart();
+    }
     if (e.key === 'p' && !gameStatus.externalPause
                       && (!gameStatus.paused ||
                           (gameStatus.paused && gameStatus.pausedScreen))) {
@@ -171,6 +207,8 @@ function start(ctx, drawNoise) {
         break;
     }
   });
+
+  init();
 
   return gameStatus;
 }
