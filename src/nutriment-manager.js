@@ -22,12 +22,15 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
   var lastpop = null;
   return {
     nutriments: nutriments,
-    popDelay: 20,
+    popDelay: 3 * 20, // <seconds> * 20
+    speed: 2,
+    // popDelay: 0.5 * 20, // <seconds> * 20
+    // speed: 8,
     tick: function(ticks, character) {
       // update every existing nutriment
       var i = nutriments.length;
       while (i--) {
-        nutriments[i].tick(character);
+        nutriments[i].tick(character, this.speed);
 
         // Remove destroyed nutriments
         if (nutriments[i].toBeRemoved) {

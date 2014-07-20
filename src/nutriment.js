@@ -8,9 +8,9 @@ var Nutriment = {
     ctx.lineWidth = 2;
     ctx.stroke();
   },
-  tick: function(character) {
+  tick: function(character, speed) {
     var direction = Victor.subtract(character.position, this.position);
-    direction.normalize().multiply(4);
+    direction.normalize().multiply(speed);
     this.position.add(direction);
   },
   destroy: function() {

@@ -44,8 +44,9 @@ function start(ctx, drawNoise, cb) {
     for (var i = 0, len = nutriments.length; i < len; i++) {
       var distance = character.position.clone().subtract(nutriments[i].position);
       var characterSize = character.totalSize().length();
-      if (distance.length() < characterSize - nutriments[i].size.x * 2) {
+      if (distance.length() < characterSize - nutriments[i].size.x * 2 - 2) {
         nutriments[i].destroy();
+        character.touch(nutriments[i].color);
       }
     }
   }
