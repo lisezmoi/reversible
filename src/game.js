@@ -19,7 +19,7 @@ var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
 
 function start(ctx, drawNoise, cb) {
   var characterPosition = new Victor(CANV_WIDTH / 2, CANV_HEIGHT / 2);
-  var character = makeCharacter(characterPosition, 40, 40, COLORS);
+  var character = makeCharacter(characterPosition, 25, 25, COLORS);
   var waves = [];
   var waveList = makeWaveList();
   var nutrimentManager = makeNutrimentManager(CANV_WIDTH, CANV_HEIGHT, character);

@@ -14,7 +14,7 @@ function nutrimentPosition(nutrimentSize, canvWidth, canvHeight) {
 }
 
 function nutrimentSize() {
-  return new Victor(10, 10);
+  return new Victor(7, 7);
 }
 
 module.exports = function makeNutrimentManager(canvWidth, canvHeight, character) {
