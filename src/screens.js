@@ -7,10 +7,10 @@ module.exports = {
     ctx.font = '60px/100px Verdana, sans-serif';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('GAME PAUSED', width / 2, height / 2 + 100/4);
+    ctx.fillText('GAME PAUSED', width / 2, height / 2 - 20);
 
     ctx.font = '20px/60px Verdana, sans-serif';
-    ctx.fillText('PRESS [P] TO RESUME', width / 2, height / 2 + 100);
+    ctx.fillText('PRESS [P] TO RESUME', width / 2, height / 2 + 60);
   },
   starting: function(ctx) {
     // TODO
