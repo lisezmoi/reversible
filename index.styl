@@ -31,6 +31,7 @@ body
   text-decoration none
   font 12px/19px verdana, sans-serif
   text-transform uppercase
+  color #999
   button
     z-index 20
     position absolute
@@ -40,7 +41,7 @@ body
     padding 20px
     margin 0
     &#controls
-      bottom 20px
+      bottom 25px
   .box
     transition(opacity, 2s, ease-out)
     border-radius 300px
@@ -50,7 +51,6 @@ body
     height 580px
     background rgba(0,0,0,1)
     position absolute
-    color #999
     top -9999px
     left -9999px
     margin -290px 0 0 -290px
@@ -61,6 +61,12 @@ body
       top 50%
       left 50%
       opacity 1
+    &.controls-box
+      p:first-child
+        margin-bottom 90px
+      img
+        width 200px
+        height auto
 main
   position relative
   transform translateY(-50%)
@@ -81,6 +87,7 @@ main
   canvas
     display block
     margin 0 auto
+    background rgb(50,50,50)
   #logo
     position absolute
     top 550px

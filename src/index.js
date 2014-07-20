@@ -1,4 +1,11 @@
+
 var game = require('./game');
 var ui = require('./ui');
+var makeGame = require('./game');
+var container = document.querySelector('main');
 
-game(document.querySelector('main')).start();
+var game = makeGame(container);
+
+game.start(function() {
+  container.classList.add('ready');
+});
