@@ -21,14 +21,22 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
   var nutriments = [];
   var lastpop = null;
   return {
+    nutriments: nutriments,
+    popDelay: 1000,
     tick: function(now, character) {
       // update every existing nutriment
-      for (var i = 0, len = nutriments.length; i < len; i++) {
+      var i = nutriments.length;
+      while (i--) {
         nutriments[i].tick(character);
+
+        // Remove destroyed nutriments
+        if (nutriments[i].toBeRemoved) {
+          nutriments.splice(i, 1);
+        }
       }
 
-      if (lastpop !== null && now - lastpop < 2000) return;
-      if (utils.getRandomInt(0, 10)) return;
+      if (lastpop !== null && now - lastpop < this.popDelay) return;
+      // if (utils.getRandomInt(0, 10)) return;
       if (nutriments.length > 100) return;
 
       lastpop = now;
@@ -37,7 +45,7 @@ module.exports = function makeNutrimentManager(canvWidth, canvHeight, character)
       var nsize = nutrimentSize();
       nutriments.push(makeNutriment(
         nutrimentPosition(nsize, canvWidth, canvHeight),
-        nsize, utils.getRandomInt(0, 1)
+        nsize, utils.getRandomInt(0, 2)
       ));
     },
     draw: function(ctx, colors) {

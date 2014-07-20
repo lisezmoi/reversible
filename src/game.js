@@ -34,6 +34,19 @@ function start(ctx, drawNoise, cb) {
     });
   }
 
+  function collisions() {
+    var nutriments = nutrimentManager.nutriments;
+
+    // nutriments / character
+    for (var i = 0, len = nutriments.length; i < len; i++) {
+      var distance = character.position.clone().subtract(nutriments[i].position);
+      var characterSize = character.totalSize().length();
+      if (distance.length() < characterSize - nutriments[i].size.x * 2) {
+        nutriments[i].destroy();
+      }
+    }
+  }
+
   function update() {
     var now = Date.now();
 
@@ -58,6 +71,9 @@ function start(ctx, drawNoise, cb) {
     });
     nutrimentManager.tick(now, character);
     updatedDrawn = false;
+
+    collisions();
+
     setTimeout(update, GAME_UPATE);
   }
   setTimeout(update, GAME_UPATE);
