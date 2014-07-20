@@ -17,8 +17,9 @@ var KEY_LEFT = 37;
 var KEY_RIGHT = 39;
 var KEY_SPACE = 32;
 var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
-var NUTRIMENTS_ACCELERATION = 0.0005;
-var NUTRIMENTS_MIN_POP_DELAY_ACCELERATION = 0.005;
+var NUTRIMENTS_ACCELERATION = 0.0003;
+var NUTRIMENTS_MIN_POP_DELAY_ACCELERATION = 0.01;
+var NUTRIMENTS_MAX_POP_DELAY_ACCELERATION = 0.007;
 var NUTRIMENTS_POP_CHANCES_ACCELERATION = 0.005;
 var SCORE_MULTIPLIER_ACCELERATION = 1.001;
 
@@ -142,8 +143,24 @@ function start(ctx, drawNoise) {
     }
 
     nutrimentManager.speed += NUTRIMENTS_ACCELERATION;
+    if (nutrimentManager.speed > 10) {
+      nutrimentManager.speed = 10;
+    }
+
     nutrimentManager.minPopDelay -= NUTRIMENTS_MIN_POP_DELAY_ACCELERATION;
+    if (nutrimentManager.minPopDelay < 0.2 * 20) {
+      nutrimentManager.minPopDelay = 0.2 * 20;
+    }
+
+    nutrimentManager.maxPopDelay -= NUTRIMENTS_MAX_POP_DELAY_ACCELERATION;
+    if (nutrimentManager.maxPopDelay < 0.5 * 20) {
+      nutrimentManager.maxPopDelay = 0.5 * 20;
+    }
+
     nutrimentManager.popChances -= NUTRIMENTS_POP_CHANCES_ACCELERATION;
+    if (nutrimentManager.popChances < 4) {
+      nutrimentManager.popChances = 4;
+    }
 
     scoreMultiplier *= SCORE_MULTIPLIER_ACCELERATION;
 
