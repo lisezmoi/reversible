@@ -47,9 +47,9 @@ var Character = {
     sizesByWeakness[0].subtract(sizeDiff);
   },
   touch: function(nutriment) {
+    if (!nutriment.charged || nutriment.dead) return;
     var growBy = new Victor(1, 1).normalize().multiply(2);
     var colorMatch = this.color === nutriment.color;
-    if (!nutriment.charged) return;
     if (colorMatch) {
       this.balance(growBy);
     } else {

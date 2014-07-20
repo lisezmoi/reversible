@@ -2,7 +2,8 @@ var Victor = require('victor');
 
 var Nutriment = {
   draw: function(ctx, colors) {
-    ctx[this.charged? 'fillStyle' : 'strokeStyle'] = colors[this.color];
+    var color = this.dead? 'grey' : colors[this.color];
+    ctx[this.charged? 'fillStyle' : 'strokeStyle'] = color;
     ctx.beginPath();
     ctx.arc(this.position.x, this.position.y, this.size.x, 0, 2 * Math.PI);
     if (!this.charged) ctx.lineWidth = 2;
@@ -24,6 +25,7 @@ var Nutriment = {
 module.exports = function(position, size, color) {
   var nutriment = Object.create(Nutriment);
   nutriment.charged = false;
+  nutriment.dead = false;
   nutriment.position = position;
   nutriment.direction = new Victor(0, 0);
   nutriment.size = size;

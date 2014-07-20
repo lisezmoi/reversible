@@ -59,7 +59,9 @@ function start(ctx, drawNoise) {
       for (var j = 0, len2 = waveList.waves.length; j < len2; j++) {
         if (waveList.waves[j].size.length() > distanceLen - nutrimentSize) {
           if (waveList.waves[j].color !== nutriments[i].color) {
-            nutriments[i].invertColor();
+            // nutriments[i].invertColor();
+            nutriments[i].dead = true;
+            nutriments[i].charged = true;
           } else {
             nutriments[i].charged = true;
           }
