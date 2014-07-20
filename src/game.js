@@ -47,8 +47,11 @@ function start(ctx, drawNoise, cb) {
     }
   }
 
+  var ticks = 0;
   function update() {
     var now = Date.now();
+
+    ticks++;
 
     if (addWave) {
       waveList.add(makeWave(character.position.clone(),
@@ -69,7 +72,7 @@ function start(ctx, drawNoise, cb) {
         wave.destroy();
       }
     });
-    nutrimentManager.tick(now, character);
+    nutrimentManager.tick(ticks, character);
     updatedDrawn = false;
 
     collisions();
