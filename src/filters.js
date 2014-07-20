@@ -2,7 +2,9 @@ var noiseImages = null;
 var noiseSources = [
   './gfx/img/noise1.png',
   './gfx/img/noise2.png',
-  './gfx/img/noise3.png'
+  './gfx/img/noise3.png',
+  './gfx/img/noise4.png',
+  './gfx/img/noise5.png'
 ];
 var noiseDrawn = 0;
 

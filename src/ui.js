@@ -12,9 +12,13 @@ function toggleClass(elem, className) {
     elem.className += ' ' + className;
   }
 }
-var box = document.querySelector('.about-box');
+var aboutBox = document.querySelector('.about-box');
+var controlsBox = document.querySelector('.controls-box');
 
 document.getElementById('about').onclick = function() {
-  console.log(box);
-  toggleClass(box, 'opened');
+  toggleClass(aboutBox, 'opened');
+}
+
+document.getElementById('controls').onclick = function() {
+  toggleClass(controlsBox, 'opened');
 }

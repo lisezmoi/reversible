@@ -30,7 +30,8 @@ body
   letter-spacing 1px
   text-decoration none
   font 12px/19px verdana, sans-serif
-  button#about
+  text-transform uppercase
+  button
     z-index 20
     position absolute
     bottom 0
@@ -38,7 +39,9 @@ body
     display block
     padding 20px
     margin 0
-  .about-box
+    &#controls
+      bottom 20px
+  .box
     transition(opacity, 2s, ease-out)
     border-radius 300px
     opacity 0
@@ -52,7 +55,6 @@ body
     left -9999px
     margin -290px 0 0 -290px
     padding 70px 106px 0 106px
-    text-transform uppercase
     text-align center
     border 1px solid #000
     &.opened
