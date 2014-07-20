@@ -38,8 +38,19 @@ var Character = {
   },
   balance: function(sizeDiff) {
     var sizesByWeakness = this.sizeByWeakness();
+
     sizesByWeakness[0].add(sizeDiff);
     sizesByWeakness[1].subtract(sizeDiff);
+
+    var len2 = sizesByWeakness[0].length();
+    var len1 = sizesByWeakness[1].length();
+
+    if (len2 > len1) {
+      this.sizes = [
+        this.defaultSizes[0].clone(),
+        this.defaultSizes[1].clone()
+      ];
+    }
   },
   unbalance: function(sizeDiff) {
     var sizesByWeakness = this.sizeByWeakness();
@@ -60,9 +71,14 @@ var Character = {
 
 module.exports = function(position, size1, size2, colors) {
   var character = Object.create(Character);
-  character.sizes = [
+
+  character.defaultSizes = [
     new Victor(size1, size1),
     new Victor(size2, size2)
+  ];
+  character.sizes = [
+    character.defaultSizes[0].clone(),
+    character.defaultSizes[1].clone()
   ];
   character.color = 0;
 
