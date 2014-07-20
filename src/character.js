@@ -48,7 +48,7 @@ var Character = {
   },
   touch: function(nutriment) {
     if (!nutriment.charged || nutriment.dead) return;
-    var growBy = new Victor(1, 1).normalize().multiply(2);
+    var growBy = new Victor(1, 1).normalize().multiply(4);
     var colorMatch = this.color === nutriment.color;
     if (colorMatch) {
       this.balance(growBy);

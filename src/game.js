@@ -71,18 +71,21 @@ function start(ctx, drawNoise) {
         nutriments[i].destroy();
       }
 
-      // nutriments <> waves
       if (nutriments[i].charged) continue;
+
+      // waves
       for (var j = 0, len2 = waveList.waves.length, wave; j < len2; j++) {
         wave = waveList.waves[j];
 
+        // waves <> character
         if (wave.invert && wave.size.length() < characterSize) {
-          character.unbalance(new Victor(1, 1).normalize().multiply(4));
+          character.unbalance(new Victor(1, 1).normalize().multiply(2));
           wave.destroy();
         }
 
         if (wave.invert) continue;
 
+        // nutriments <> waves
         if (wave.size.length() > distanceLen - nutrimentSize) {
           if (wave.active) {
             if (wave.color === nutriments[i].color) {
@@ -90,8 +93,6 @@ function start(ctx, drawNoise) {
               wave.active = false;
             } else if (wave.color !== nutriments[i].color) {
               wave.invert = true;
-              // nutriments[i].dead = true;
-              // nutriments[i].charged = true;
             }
           } else if (wave.color === nutriments[i].color) {
             nutriments[i].invertColor();
@@ -172,10 +173,12 @@ function start(ctx, drawNoise) {
       updateTimeoutId = setTimeout(update, GAME_UPATE);
     },
     restart: function() {
+      this.pause();
       this.gameover = false;
       this.paused = false;
       this.pausedScreen = false;
       init();
+      this.resume();
     }
   };
 
