@@ -5,6 +5,7 @@ var Nutriment = {
     ctx.strokeStyle = colors[this.color];
     ctx.beginPath();
     ctx.arc(this.position.x, this.position.y, this.size.x, 0, 2 * Math.PI);
+    ctx.lineWidth = 2;
     ctx.stroke();
   },
   tick: function(character) {
