@@ -14,7 +14,7 @@ var KEY_UP = 38;
 var KEY_DOWN = 40;
 var COLORS = ['rgb(200,255,0)', 'rgb(250,90,100)'];
 
-function start(ctx, drawNoise) {
+function start(ctx, drawNoise, cb) {
   var characterPosition = new Victor(CANV_WIDTH / 2, CANV_HEIGHT / 2);
   var character = makeCharacter(characterPosition, 40, 40, COLORS);
   var waves = [];
@@ -81,9 +81,6 @@ function start(ctx, drawNoise) {
     if (fpsmeter) fpsmeter.tick();
   }, GAME_FPS);
 
-  function addWave() {
-  }
-
   document.addEventListener('keydown', function(e) {
     switch (e.keyCode) {
       case KEY_UP:
@@ -94,6 +91,8 @@ function start(ctx, drawNoise) {
         break;
     }
   });
+
+  cb();
 }
 
 function getCanvas(container) {
@@ -108,9 +107,9 @@ module.exports = function game(container) {
   var canvas = getCanvas(container);
   var ctx = canvas.getContext('2d');
   return {
-    start: function() {
+    start: function(cb) {
       filters.prepareNoise(function(drawNoise) {
-        start(ctx, drawNoise);
+        start(ctx, drawNoise, cb);
       });
     }
   };

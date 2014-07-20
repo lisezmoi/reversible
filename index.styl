@@ -4,25 +4,14 @@ body
   margin 0
   padding 0
   background black
-  .about
-    position absolute
-    bottom 0
-    right 0
-    display block
-    padding 20px
-    margin 0
-    letter-spacing 1px
-    a
-      color #444
-      text-decoration none
-      font-size 12px
-      font-family verdana, sans-serif
-      &:hover
-        color #777
 main
   position relative
   transform translateY(-50%)
   top 50%
+  transition opacity 500ms ease-in-out
+  opacity 0
+  &.ready
+    opacity 1
 canvas
   display block
   margin 0 auto
@@ -36,3 +25,18 @@ canvas
     height auto
     display block
     margin 0 auto
+.about
+  position absolute
+  bottom 0
+  right 0
+  display block
+  padding 20px
+  margin 0
+  letter-spacing 1px
+  a
+    color #444
+    text-decoration none
+    font-size 12px
+    font-family verdana, sans-serif
+    &:hover
+      color #777
