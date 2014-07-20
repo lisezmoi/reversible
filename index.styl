@@ -1,28 +1,81 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+transition(properties, durations, timings)
+    -moz-transition-property properties
+    -o-transition-property properties
+    -webkit-transition-property properties
+    -ms-transition-property properties
+    transition-property properties
+    -moz-transition-duration durations
+    -o-transition-duration durations
+    -webkit-transition-duration durations
+    -ms-transition-duration durations
+    transition-duration durations
+    -moz-transition-timing-function timings
+    -o-transition-timing-function timings
+    -webkit-transition-timing-function timings
+    -ms-transition-timing-function timings
+    transition-timing-function timings
+
+
 body, html
   height 100%
 body
   margin 0
   padding 0
   background black
-  .about
+  letter-spacing 1px
+  text-decoration none
+  font 12px/19px verdana, sans-serif
+  button#about
+    z-index 20
     position absolute
     bottom 0
     right 0
     display block
     padding 20px
     margin 0
-    letter-spacing 1px
-    a
-      color #444
-      text-decoration none
-      font-size 12px
-      font-family verdana, sans-serif
-      &:hover
-        color #777
+  .about-box
+    transition(opacity, 2s, ease-out)
+    border-radius 300px
+    opacity 0
+    z-index 10
+    width 580px
+    height 580px
+    background rgba(0,0,0,1)
+    position absolute
+    color #999
+    top -9999px
+    left -9999px
+    margin -290px 0 0 -290px
+    padding 70px 106px 0 106px
+    text-transform uppercase
+    text-align center
+    border 1px solid #000
+    &.opened
+      top 50%
+      left 50%
+      opacity 1
 main
   position relative
   transform translateY(-50%)
   top 50%
+a, button
+  text-decoration none
+  color #444
+  &:hover
+    color #777
+button
+  background none
+  border 0
+  padding 0
+  color #444
+p
+  margin 0 0 10px 0
+main
   canvas
     display block
     margin 0 auto
@@ -35,3 +88,7 @@ main
       height auto
       display block
       margin 0 auto
+
+:-moz-any-link:focus {color:#eee;}
+::selection {color:#eee;}
+::-moz-selection {color:#eee;}
