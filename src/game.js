@@ -70,15 +70,17 @@ function start(ctx, drawNoise) {
   }
 
   var ticks = 0;
+  var lastWaveAdded = null;
   function update() {
     var now = Date.now();
 
     ticks++;
 
-    if (addWave) {
+    if (addWave && (!lastWaveAdded || ticks - lastWaveAdded > 2)) {
       waveList.add(makeWave(character.position.clone(),
                             character.totalSize().clone(), character.color));
       addWave = false;
+      lastWaveAdded = ticks;
     }
 
     if (reverseCharacter) {
