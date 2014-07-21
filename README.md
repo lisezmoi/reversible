@@ -15,9 +15,11 @@ Your life will depend on the balance of your system and your ability to adapt an
 
 Be careful: you are alone and weak.
 
+![Screenshot](gfx/img/screenshot.png)
+
 ## Context and tools
 
-Made in 48 hours during a [Selfish Game Challenge](http://lisezmoi.org/selfishgame/), from the theme “Inside Out”.
+Made by [Pierre Bertet](http://pierrebertet.net/) and [Raphaël Bastide](http://raphaelbastide.com/) in 48 hours during a [Selfish Game Challenge](http://lisezmoi.org/selfishgame/), from the theme “Inside Out”.
 
 Designed with [Gimp](http://www.gimp.org/), [Inkscape](http://www.inkscape.org/), and JavaScript. Music was composed with [LMMS](http://sourceforge.net/projects/lmms/).
 
