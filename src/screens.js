@@ -7,7 +7,7 @@ module.exports = {
     ctx.font = '12px/19px Verdana, sans-serif';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('GAME PAUSED', width / 2, height / 2);
+    ctx.fillText('PAUSE', width / 2, height / 2);
 
     ctx.font = '12px/19px Verdana, sans-serif';
     ctx.fillText('PRESS [P] TO RESUME'.split("").join(String.fromCharCode(8201)), width / 2, height / 2 + 120);
