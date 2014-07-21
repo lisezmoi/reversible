@@ -26,14 +26,7 @@ body button {
   margin: 0;
 }
 body button#controls {
-  bottom: 50px;
-}
-body button.audioCtrl {
-  bottom: 80px;
-  display: block;
-}
-body button.audioCtrl.hidden {
-  display: none;
+  bottom: 45px;
 }
 body .box {
   transition: opacity 0.3s ease-out;

@@ -9,11 +9,13 @@
 <body>
   <button id="about">About</button>
   <button id="controls">Controls</button>
+  <button class="audioCtrl showed pause">Pause</button>
+  <button class="audioCtrl hidden play">Play</button>
   <div class="controls-box box">
     <p>Controls</p>
-    <p>UP arrow to produce an energy wave</p>
+    <p>UP arrow (or space)<br>to produce an energy wave</p>
     <img src="gfx/img/controls.svg" alt="Controls">
-    <p>DOWN arrow to revert your surface</p>
+    <p>DOWN arrow<br>to revert your surface</p>
   </div>
   <div class="about-box box">
     <p>Life depends on you.</p>
@@ -27,6 +29,10 @@
     <div id="logo">
       <img src="gfx/sources/ui-logo.svg" alt="Reversible">
     </div>
+    <audio id="player" loop preload autoplay>
+      <source src="gfx/loop.ogg">
+      <source src="gfx/loop.mp3">
+    </audio>
   </main>
 
 <!-- <script> DEBUG = true </script> -->
