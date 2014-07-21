@@ -1,4 +1,3 @@
-
 var game = require('./game');
 var ui = require('./ui');
 var makeGame = require('./game');
@@ -9,13 +8,12 @@ var game = makeGame(container);
 game.start(function(gameStatus) {
   container.classList.add('ready');
 
-  gameStatus.resume();
+  // gameStatus.resume();
 
-  ui(function(boxDisplayed) {
+  ui(function uiUpdate(boxDisplayed) {
     gameStatus.externalPause = boxDisplayed;
-    if (boxDisplayed) {
-      gameStatus.pause();
-    }
+    if (boxDisplayed) gameStatus.pause();
     else if (!gameStatus.pausedScreen) gameStatus.resume();
   });
+
 });
