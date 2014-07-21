@@ -10,7 +10,7 @@ module.exports = {
     ctx.fillText('GAME PAUSED', width / 2, height / 2);
 
     ctx.font = '12px/19px Verdana, sans-serif';
-    ctx.fillText('PRESS [P] TO RESUME', width / 2, height / 2 + 120);
+    ctx.fillText('PRESS [P] TO RESUME'.split("").join(String.fromCharCode(8201)), width / 2, height / 2 + 120);
   },
   starting: function(ctx) {
     // TODO
@@ -23,14 +23,14 @@ module.exports = {
     ctx.font = '12px/19px Verdana, sans-serif';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('GAME OVER', width / 2, height / 2);
+    ctx.fillText('GAME OVER'.split("").join(String.fromCharCode(8201)), width / 2, height / 2);
 
     ctx.font = '12px/19px Verdana, sans-serif';
 
     var years = (Math.round(score * 1000) + '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-    ctx.fillText('EVOLUTION PERIOD: ' + years + ' YEARS', width / 2, height / 2 + 120);
+    ctx.fillText('EVOLUTION PERIOD: '.split("").join(String.fromCharCode(8201)) + years + ' YEARS', width / 2, height / 2 + 120);
 
     ctx.font = '12px/19px Verdana, sans-serif';
-    ctx.fillText('PRESS [R] TO PLAY AGAIN', width / 2, height / 2 + 160);
+    ctx.fillText('PRESS [R] TO PLAY AGAIN'.split("").join(String.fromCharCode(8201)), width / 2, height / 2 + 160);
   }
 };
