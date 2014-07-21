@@ -17,9 +17,9 @@ Be careful: you are alone and weak.
 
 ## Context and tools
 
-Made during a [Selfish Game Challenge](http://lisezmoi.org/selfishgame/), from the theme “Inside Out”.
+Made in 48 hours during a [Selfish Game Challenge](http://lisezmoi.org/selfishgame/), from the theme “Inside Out”.
 
-Designed using [Gimp](http://www.gimp.org/), [Inkscape](http://www.inkscape.org/), and JavaScript. Music was composed with [LMMS](http://sourceforge.net/projects/lmms/).
+Designed with [Gimp](http://www.gimp.org/), [Inkscape](http://www.inkscape.org/), and JavaScript. Music was composed with [LMMS](http://sourceforge.net/projects/lmms/).
 
 ## How to develop
 
