@@ -220,12 +220,13 @@ function start(ctx, drawNoise) {
   };
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'r' && (!gameStatus.paused || gameStatus.gameover)) {
+    var key = String.fromCharCode(e.which).toLowerCase();
+    if (key === 'r' && (!gameStatus.paused || gameStatus.gameover)) {
       gameStatus.restart();
     }
-    if (e.key === 'p' && !gameStatus.externalPause
-                      && (!gameStatus.paused ||
-                          (gameStatus.paused && gameStatus.pausedScreen))) {
+    if (key === 'p' && !gameStatus.externalPause
+                    && (!gameStatus.paused ||
+                        (gameStatus.paused && gameStatus.pausedScreen))) {
       gameStatus[gameStatus.paused? 'resume' : 'pause'](true);
     }
     if (gameStatus.paused) return;

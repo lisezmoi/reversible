@@ -6,7 +6,8 @@
 body, html
   height 100%
 body
-  margin 0
+  display table
+  margin 0 auto
   padding 0
   background black url(../gfx/img/loader.gif) no-repeat center center
   letter-spacing 1px
@@ -14,65 +15,65 @@ body
   font 12px/19px verdana, sans-serif
   text-transform uppercase
   color #999
-  button
-    z-index 20
-    position absolute
-    bottom 20px
-    right 20px
+button
+  z-index 20
+  position absolute
+  bottom 20px
+  right 20px
+  display block
+  margin 0
+  &#controls
+    bottom 50px
+  &.audioCtrl
+    bottom 80px
     display block
-    margin 0
-    &#controls
-      bottom 50px
-    &.audioCtrl
-      bottom 80px
-      display block
-      img
-        width 23px
-        height auto
-      &.hidden
-        display none
-  .box
-    transition opacity .3s ease-out
-    border-radius 300px
-    opacity 0
-    z-index 10
-    width 580px
-    height 580px
-    background rgba(0,0,0,1)
-    position absolute
-    top -9999px
-    left -9999px
-    margin -290px 0 0 -290px
-    padding 70px 106px 0 106px
-    text-align center
-    border 1px solid #000
-    &.opened
-      top 50%
-      left 50%
-      opacity 1
-    &.controls-box
-      p:first-child
-        margin-bottom 90px
-      img
-        width 200px
-        height auto
-    &.start-box
-      p
-        transition background-color 200ms ease-in-out
-        background-color #000
-        border 1px solid
-        border-radius 100px
-        padding-top 39px
-        width 100px
-        height 100px
-        margin 92px auto 0 auto
-        cursor pointer
-        &:hover
-          background-color #111
-      img
-        width 146px
-        height auto
-        margin-top 50px
+    img
+      width 23px
+      height auto
+    &.hidden
+      display none
+.box
+  transition opacity .3s ease-out
+  border-radius 300px
+  opacity 0
+  z-index 10
+  width 580px
+  height 580px
+  background rgba(0,0,0,1)
+  position absolute
+  top -9999px
+  left -9999px
+  margin -290px 0 0 -290px
+  padding 70px 106px 0 106px
+  text-align center
+  border 1px solid #000
+  &.opened
+    top 50%
+    left 50%
+    opacity 1
+  &.controls-box
+    p:first-child
+      margin-bottom 90px
+    img
+      width 200px
+      height auto
+  &.start-box
+    p
+      transition background-color 200ms ease-in-out
+      background-color #000
+      border 1px solid
+      border-radius 100px
+      padding-top 39px
+      width 100px
+      height 100px
+      margin 92px auto 0 auto
+      cursor pointer
+      &:hover
+        background-color #111
+    img
+      width 146px
+      height auto
+      margin-top 50px
 a, button
   text-decoration none
   color #666
@@ -86,9 +87,9 @@ button
 p
   margin 0 0 10px 0
 main
-  position relative
-  transform translateY(-50%)
-  top 50%
+  display table-cell
+  vertical-align middle
+  width 100%
   transition opacity 500ms ease-in-out
   opacity 0
   &.ready
@@ -100,8 +101,10 @@ canvas
 #logo
   position absolute
   top 550px
-  width 100%
+  left 50%
   img
+    position relative
+    left -53px
     width 106px
     height auto
     display block
